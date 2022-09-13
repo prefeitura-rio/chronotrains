@@ -468,6 +468,8 @@ const Home: NextPage = () => {
 
 /* This example requires Tailwind CSS v2.0+ */
 
+const times = [30, 45, 60, 90, 120]
+
 const InfoPanel = () => {
   const [open, setOpen] = useState(true);
   const { t } = useTranslation();
@@ -547,7 +549,7 @@ const InfoPanel = () => {
                                 className="w-full h-4"
                                 style={{ backgroundColor: color }}
                               />
-                              <span className="text-sm">{(i + 1) * 30} min</span>
+                              <span className="text-sm">{times[i]} min</span>
                             </div>
                           ))}
                         </div>

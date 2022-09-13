@@ -18,13 +18,14 @@ export const getStaticProps: GetStaticProps = async (req) => {
   let isochrones = await prisma.isochrone.findMany({
     where: {
       stationId: +(req.params!.stationId as string),
-      duration: { in: [30, 45, 60, 90, 120] }
+      // duration: { in: [30, 45, 60, 90, 120] }
     },
     orderBy: { duration: 'desc' }
   });
 
+  console.log()
+
   console.log("iso", isochrones)
-  console.log(Feature<>)
   console.log({
     props: {
       stationId: +(req.params!.stationId as string),
