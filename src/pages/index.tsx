@@ -18,13 +18,14 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { Trans, useTranslation } from "next-i18next";
 import { queryTypes, useQueryStates } from "next-usequerystate";
 
-mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN!;
+mapboxgl.accessToken = "pk.eyJ1IjoiZXNjcml0b3Jpb2RlZGFkb3MiLCJhIjoiY2t5bGx6Z2I1MG5nbzJwcGUyeHFxcGs1bCJ9.sAUs1LRcb3R4l-6Dbhk8Pw";
+// mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN!;
 
 const Home: NextPage = () => {
   const [routeParams, setRouteParams] = useQueryStates({
-    lat: queryTypes.float.withDefault(45),
-    lng: queryTypes.float.withDefault(8),
-    zoom: queryTypes.float.withDefault(4),
+    lat: queryTypes.float.withDefault(-22.9),
+    lng: queryTypes.float.withDefault(-43.3),
+    zoom: queryTypes.float.withDefault(10),
     stationId: queryTypes.integer
   });
 
@@ -34,18 +35,21 @@ const Home: NextPage = () => {
   const [selectedStation, setSelectedStation] = useState<number | null>(
     routeParams.stationId
   );
-
+  
   const [displayedIsochrones, setDisplayedIsochrones] = useState<number | null>(
     null
   );
+  console.log(displayedIsochrones)
   const isochronesData = useIsochronesData(selectedStation || hoveredStation);
   const stationsFC = useStationsFC();
+  
 
   const selectedStationName = useMemo(() => {
     return stationsFC?.features.find(
       (f) => f.properties?.id === selectedStation
     )?.properties?.name;
   }, [selectedStation, stationsFC]);
+
 
   useEffect(() => {
     if (map) return; // initialize map only once
@@ -190,15 +194,15 @@ const Home: NextPage = () => {
               ["get", "duration"],
               0,
               "rgba(189,0,38,0.9)",
-              60,
+              30,
               "rgba(240,59,32,0.8)",
-              120,
+              45,
               "rgba(253,141,60,0.7)",
-              180,
+              60,
               "rgba(254,204,92,0.6)",
-              240,
+              90,
               "rgba(254,217,118, 0.5)",
-              300,
+              120,
               "rgba(255,255,178, 0.4)",
             ],
           },
@@ -219,15 +223,15 @@ const Home: NextPage = () => {
               ["get", "duration"],
               0,
               "rgba(189,0,38,0.8)",
-              60,
+              30,
               "rgba(240,59,32,0.8)",
-              120,
+              45,
               "rgba(253,141,60,0.8)",
-              180,
+              60,
               "rgba(254,204,92,0.8)",
-              240,
+              90,
               "rgba(254,217,118,0.8)",
-              300,
+              120,
               "rgba(224, 116, 38,0.9)",
             ],
             "line-width": 1.5,
@@ -543,7 +547,7 @@ const InfoPanel = () => {
                                 className="w-full h-4"
                                 style={{ backgroundColor: color }}
                               />
-                              <span className="text-sm">{i + 1} h</span>
+                              <span className="text-sm">{(i + 1) * 30} min</span>
                             </div>
                           ))}
                         </div>

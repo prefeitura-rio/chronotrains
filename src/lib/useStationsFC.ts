@@ -8,4 +8,6 @@ const useStationsFC = () => {
   return fc;
 };
 
+// console.log(useStationsFC())
+
 export default useStationsFC;

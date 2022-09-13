@@ -11,12 +11,14 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<StationsRes>
 ) {
+  // let test = await prisma.station.findMany({select: {name: true}})
+  
   let stations = await prisma.station.findMany({
-    where: {
-      isochrones: {
-        some: {},
-      },
-    },
+    // where: {
+    //   isochrones: {
+    //     some: {},
+    //   },
+    // },
     select: {
       name: true,
       longitudeE7: true,
@@ -26,8 +28,10 @@ export default async function handler(
     },
   });
 
+  // console.log(stations)
+
   const features = stations
-    .filter((s) => s._count.isochrones === 5)
+    // .filter((s) => s._count.isochrones === 5)
     .sort((a, b) => b._count.timesDeparting - a._count.timesDeparting)
     .map(
       (s): Feature<Point, { name: string; id: number }> => ({

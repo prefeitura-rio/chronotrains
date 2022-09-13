@@ -18,19 +18,42 @@ export const getStaticProps: GetStaticProps = async (req) => {
   let isochrones = await prisma.isochrone.findMany({
     where: {
       stationId: +(req.params!.stationId as string),
-      duration: { in: [60, 120, 180, 240, 300] }
+      duration: { in: [30, 45, 60, 90, 120] }
     },
     orderBy: { duration: 'desc' }
   });
 
+  console.log("iso", isochrones)
+  console.log(Feature<>)
+  console.log({
+    props: {
+      stationId: +(req.params!.stationId as string),
+      geometry: { type: 'FeatureCollection', features: isochrones.map((iso) => (
+        {
+          "properties": {"duration": iso.duration},
+          "geometry": iso.geometry
+      }
+        
+        ))} 
+    },
+    revalidate: 60 * 60 * 24 // 1 day
+  }.props.geometry['features'])
+
   return {
     props: {
       stationId: +(req.params!.stationId as string),
-      geometry: { type: 'FeatureCollection', features: isochrones.map(iso => iso.geometry as any as Feature<Polygon | MultiPolygon, { duration: number }>) }
+      geometry: { type: 'FeatureCollection', features: isochrones.map((iso) => (
+        {
+          "properties": {"duration": iso.duration},
+          "geometry": iso.geometry
+      }
+      ))} 
     },
     revalidate: 60 * 60 * 24 // 1 day
   }
+
 }
+
 
 
 export async function getStaticPaths() {
