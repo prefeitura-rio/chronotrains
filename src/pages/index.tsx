@@ -245,16 +245,17 @@ const Home: NextPage = () => {
         type: "symbol",
         source: "stations",
         layout: {
-          "text-field": ["get", "name"],
-          "text-offset": [0, -1.5],
-          "text-size": 10,
-          "text-font": ["DIN Pro Medium", "Open Sans Regular"],
+          // "text-field": ["get", "name"],
+          // "text-offset": [0, -1.5],
+          // "text-size": 10,
+          // "text-font": ["DIN Pro Medium", "Open Sans Regular"],
           "icon-image": "dot-11",
         },
         paint: {
           "text-color": "#333",
+          "icon-opacity": 0
         },
-        minzoom: 7,
+        minzoom: 10,
       });
 
       mapboxMap.addLayer({
