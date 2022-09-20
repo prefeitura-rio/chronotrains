@@ -18,8 +18,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { Trans, useTranslation } from "next-i18next";
 import { queryTypes, useQueryStates } from "next-usequerystate";
 
-mapboxgl.accessToken = "pk.eyJ1IjoiZXNjcml0b3Jpb2RlZGFkb3MiLCJhIjoiY2t5bGx6Z2I1MG5nbzJwcGUyeHFxcGs1bCJ9.sAUs1LRcb3R4l-6Dbhk8Pw";
-// mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN!;
+mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN!;
 
 const Home: NextPage = () => {
   const [routeParams, setRouteParams] = useQueryStates({
@@ -406,6 +405,7 @@ const Home: NextPage = () => {
       map: mapboxgl.Map,
       isochronesData: IsochronesRes | undefined
     ) => {
+      console.log("setMapIsochronesData", station, isochronesData);
       if (isochronesData && isochronesData.stationId === station) {
         const fc = isochronesData.geometry as any as FeatureCollection<
           Polygon | MultiPolygon,

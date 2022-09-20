@@ -7,7 +7,7 @@ const useIsochronesData = (stationId?: number | null) => {
   const { data: isochronesData } = useSWR<{ pageProps: IsochronesRes }>(
     // client-side only fetching.
     stationId && typeof window !== "undefined"
-      ? `/_next/data/${window.__NEXT_DATA__.buildId}/en/isochrones/${stationId}.json`
+      ? `/_next/data/${window.__NEXT_DATA__.buildId}/pt/isochrones/${stationId}.json`
       : null
   );
 
