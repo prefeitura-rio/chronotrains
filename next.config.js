@@ -2,15 +2,16 @@
 const { i18n } = require("./next-i18next.config");
 
 module.exports = {
+  basePath: process.env.BASE_PATH,
   output: "standalone",
   reactStrictMode: true,
   i18n,
+  swcMinify: true,
   typescript: {
     // !! WARN !!
     // Dangerously allow production builds to successfully complete even if
     // your project has type errors.
     // !! WARN !!
     ignoreBuildErrors: true
-  },
-  swcMinify: true
+  }
 };
