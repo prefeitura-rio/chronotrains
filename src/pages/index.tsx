@@ -18,7 +18,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { Trans, useTranslation } from "next-i18next";
 import { queryTypes, useQueryStates } from "next-usequerystate";
 
-mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN!;
+mapboxgl.accessToken = "pk.eyJ1IjoiZXNjcml0b3Jpb2RlZGFkb3MiLCJhIjoiY2t5bGx6Z2I1MG5nbzJwcGUyeHFxcGs1bCJ9.sAUs1LRcb3R4l-6Dbhk8Pw";
 
 const Home: NextPage = () => {
   const [routeParams, setRouteParams] = useQueryStates({
