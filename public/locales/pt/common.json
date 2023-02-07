@@ -1,10 +1,13 @@
 {
-  "chronotrains": "DistânciaDeslocamentoÔnibus",
+  "chronotrains": "Em 2 horas, até onde você vai no Rio?",
+  "tagline": "Veja até onde é possível ir utilizando o transporte público na cidade maravilhosa.",
   "title": "Em 2 horas, até onde você vai de transporte público na cidade do Rio de Janeiro?",
-  "intro": "Este mapa interativo mostra qual a distância que é possível chegar em até duas horas, partindo de cada bairro da cidade do Rio de Janeiro.",
-  "credits": "Produzido pela equipe do Escritório de Dados, com informações da Secretaria Municipal de Transportes, esta visualização calcula a possibilidade de locomoção pela cidade utilizando as opções de transporte público espalhadas pelo município: ônibus, trem, metrô, BRT e VLT. Para isso, calculamos a previsão de chegada em cada bairro, a partir do tempo médio de deslocamento em um dia de semana, às 8 horas da manhã.",
-  "helper": "Para visualizar as áreas possíveis de alcance, passe o mouse sobre o bairro para ver até onde é possível chegar.",
-  "assumptions": "Ficou com alguma dúvida? Entre em contato conosco nos canais disponíveis em nosso site.",
+  "paragraph1": "Este mapa interativo mostra qual a distância que é possível chegar em até duas horas, partindo de cada bairro do Rio de Janeiro e utilizando o transporte público da cidade.",
+  "paragraph2": "Produzido pela equipe do Escritório de Dados, com informações da Secretaria Municipal de Transportes, esta visualização calcula a possibilidade de locomoção pela cidade utilizando as opções de transporte público espalhadas pelo município: ônibus, trem, metrô, BRT e VLT.",
+  "paragraph3": "Para isso, calculamos a previsão de chegada em cada bairro, a partir do tempo médio de deslocamento em um dia de semana, às 8 horas da manhã.",
+  "paragraph4": "Para visualizar as áreas possíveis de alcance, passe o mouse sobre o bairro para ver até onde é possível chegar.",
+  "paragraph5": "Ficou com alguma dúvida? Entre em contato conosco nos canais disponíveis em nosso site.",
+  "legend": "Tempo de deslocamento",
   "open-source": " Este código é aberto e está disponível na nossa página do GitHub.",
   "support": ""
 }

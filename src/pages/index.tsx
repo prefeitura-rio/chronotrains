@@ -522,21 +522,13 @@ const InfoPanel = () => {
                   </div>
                   <div className="relative flex-1 px-4 pb-12 mt-6 sm:px-6">
                     <div className="absolute inset-0 px-4 sm:px-6">
-                      <p>{t("intro")}</p>
-                      <p>
-                        <Trans i18nKey="credits">
-                          It is inspired by the great
-                          <a href="https://direkt.bahn.guru/">
-                            Direkt Bahn Guru
-                          </a>
-                          . The data is based off of this site, which sources it
-                          from the Deutsche Bahn.
-                        </Trans>
-                      </p>
-                      <p>{t("helper")}</p>
-                      <p>{t("assumptions")}</p>
+                      <p>{t("paragraph1")}</p>
+                      <p>{t("paragraph2")}</p>
+                      <p>{t("paragraph3")}</p>
+                      <p>{t("paragraph4")}</p>
+                      <p>{t("paragraph5")}</p>
                       <div>
-                        <span>{t("reachable")}</span>
+                        <span>{t("legend")}</span>
                         <div className="grid grid-cols-5 gap-2">
                           {[
                             "rgba(240,59,32,0.9)",
@@ -556,25 +548,19 @@ const InfoPanel = () => {
                         </div>
 
                         <div className="py-12">
-                          {t("questions")}
-                          <a href="https://www.twitter.com/_benjamintd">
-                            @_benjamintd
-                            <Twitter className="inline ml-2 -mt-1" />
-                          </a>
                           <p>
-                            <Trans i18nKey="open-source">
-                              It&apos;s
-                              <a href="https://github.com/benjamintd/chronotrains">
-                                open-source
-                              </a>
-                              .
-                            </Trans>
+                            O  código deste projeto é aberto e está disponível em nossa&nbsp;
+                            <a href="https://github.com/prefeitura-rio/chronotrains">
+                            página do GitHub
+                            </a>
+                            .
                           </p>
                           <p>
-                            <Trans i18nKey="support">
-                              Keep the project running by supporting it on
-                              <a href="https://ko-fi.com/benjamintd">ko-fi</a>.
-                            </Trans>
+                            Os dados do GTFS dos ônibus estão públicos e podem ser acessados através&nbsp;
+                            <a href="https://www.data.rio/datasets/gtfs-do-rio-de-janeiro/about">
+                            desse link
+                            </a>
+                            .
                           </p>
                         </div>
                       </div>

@@ -17,12 +17,12 @@ function Meta() {
   
         <meta content={t("chronotrains")} property="og:title" />
         <meta content={tagline} property="og:description" />
-        <meta content="https://www.chronotrains.com/thumbnail.png" property="og:image" />
-        <meta content="https://www.chronotrains.com" property="og:url" />
+        <meta content="https://mapa-subsidio.dados.rio/thumbnail.png" property="og:image" />
+        <meta content="https://mapa-subsidio.dados.rio" property="og:url" />
   
         <meta content={t("chronotrains")} name="twitter:title" />
         <meta content={tagline} name="twitter:description" />
-        <meta content="https://www.chronotrains.com/thumbnail.png" name="twitter:image" />
+        <meta content="https://mapa-subsidio.dados.rio/thumbnail.png" name="twitter:image" />
         <meta content="summary_large_image" name="twitter:card" />
       </Head>
     );
