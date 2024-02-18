@@ -84,23 +84,23 @@ const Home: NextPage = () => {
         data: { type: "FeatureCollection", features: [] },
       });
 
-      mapboxMap.addLayer(
-        {
-          id: "stations",
-          type: "circle",
-          source: "stations",
-          paint: {
-            "circle-radius": 5,
-            "circle-opacity": [
-              'case',
-              ['<=', ["get", "id"], 10],
-              1,
-              0
-            ],
-          },
-        },
-        "waterway-label"
-      );
+      // mapboxMap.addLayer(
+      //   {
+      //     id: "stations",
+      //     type: "circle",
+      //     source: "stations",
+      //     paint: {
+      //       "circle-radius": 5,
+      //       "circle-opacity": [
+      //         'case',
+      //         ['<=', ["get", "id"], 10],
+      //         1,
+      //         0
+      //       ],
+      //     },
+      //   },
+      //   "waterway-label"
+      // );
 
       // mapboxMap.addLayer(
       //   {
@@ -446,7 +446,7 @@ const Home: NextPage = () => {
 
 /* This example requires Tailwind CSS v2.0+ */
 
-const times = [30, 45, 60, 90, 120]
+const times = ["Junho de 2022", "Janeiro de 2024"]
 
 const InfoPanel = () => {
   const [open, setOpen] = useState(true);
@@ -499,19 +499,14 @@ const InfoPanel = () => {
                   </div>
                   <div className="relative flex-1 px-4 pb-12 mt-6 sm:px-6">
                     <div className="absolute inset-0 px-4 sm:px-6">
-                      <p>{t("paragraph1")}</p>
-                      <p>{t("paragraph2")}</p>
-                      <p>{t("paragraph3")}</p>
-                      <p>{t("paragraph4")}</p>
-                      <p>{t("paragraph5")}</p>
                       <div>
                         <span>{t("legend")}</span>
-                        <div className="grid grid-cols-5 gap-2">
+                        <div className="grid grid-cols-2 gap-2">
                           {[
                             "rgba(240,59,32,0.9)",
-                            "rgba(253,141,60,0.9)",
-                            "rgba(254,204,92,1)",
-                            "rgba(254,217,118,1)",
+                            // "rgba(253,141,60,0.9)",
+                            // "rgba(254,204,92,1)",
+                            // "rgba(254,217,118,1)",
                             "rgba(255,255,178, 1)",
                           ].map((color, i) => (
                             <div className="flex flex-col items-center" key={i}>
@@ -519,10 +514,15 @@ const InfoPanel = () => {
                                 className="w-full h-4"
                                 style={{ backgroundColor: color }}
                               />
-                              <span className="text-sm">{times[i]} min</span>
+                              <span className="text-sm">{times[i]}</span>
                             </div>
                           ))}
                         </div>
+                      <p>{t("paragraph1")}</p>
+                      <p>{t("paragraph2")}</p>
+                      <p>{t("paragraph3")}</p>
+                      <p>{t("paragraph4")}</p>
+                      <p>{t("paragraph5")}</p>
 
                         <div className="py-12">
                           <p>
