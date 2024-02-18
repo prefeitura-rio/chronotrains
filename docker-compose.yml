@@ -3,7 +3,7 @@ version: '3.8'
 services:
   db:
       container_name: pg_container
-      image: kartoza/postgis:14-3.2
+      image: kartoza/postgis:15-3.4
       restart: always
       environment:
         POSTGRES_USER: root

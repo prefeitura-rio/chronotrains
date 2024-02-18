@@ -38,7 +38,6 @@ const Home: NextPage = () => {
   const [displayedIsochrones, setDisplayedIsochrones] = useState<number | null>(
     null
   );
-  console.log(displayedIsochrones)
   const isochronesData = useIsochronesData(selectedStation || hoveredStation);
   const stationsFC = useStationsFC();
   
@@ -87,89 +86,59 @@ const Home: NextPage = () => {
 
       mapboxMap.addLayer(
         {
-          id: "country-boundaries",
-          type: "fill",
-          source: "countries",
-          "source-layer": "country_boundaries",
-          filter: [
-            "match",
-            ["get", "iso_3166_1_alpha_3"],
-            ["FRA"],
-            true,
-            ["ESP"],
-            true,
-            ["PRT"],
-            true,
-            ["GBR"],
-            true,
-            ["DEU"],
-            true,
-            ["FIN"],
-            true,
-            ["SWE"],
-            true,
-            ["NOR"],
-            true,
-            ["BEL"],
-            true,
-            ["LUX"],
-            true,
-            ["DNK"],
-            true,
-            ["NLD"],
-            true,
-            ["ITA"],
-            true,
-            ["CHE"],
-            true,
-            ["AUT"],
-            true,
-            ["POL"],
-            true,
-            ["CZE"],
-            true,
-            ["SVK"],
-            true,
-            ["SVN"],
-            true,
-            ["HUN"],
-            true,
-            ["HRV"],
-            true,
-            ["UKR"],
-            true,
-            ["MDA"],
-            true,
-            ["ROU"],
-            true,
-            ["BGR"],
-            true,
-            ["IRL"],
-            true,
-            ["GRC"],
-            true,
-            ["LTU"],
-            true,
-            false,
-          ],
-          layout: {},
-          paint: { "fill-color": "hsl(0, 0%, 100%)" },
-        },
-        "water shadow"
-      );
-
-      mapboxMap.addLayer(
-        {
           id: "stations",
           type: "circle",
           source: "stations",
           paint: {
             "circle-radius": 5,
-            "circle-opacity": 0,
+            "circle-opacity": [
+              'case',
+              ['<=', ["get", "id"], 10],
+              1,
+              0
+            ],
           },
         },
         "waterway-label"
       );
+
+      // mapboxMap.addLayer(
+      //   {
+      //     id: "isochrones",
+      //     type: "fill",
+      //     source: "isochrones",
+      //     layout: {},
+      //     paint: {
+      //       "fill-opacity": [
+      //         "interpolate",
+      //         ["linear"],
+      //         ["zoom"],
+      //         7,
+      //         0.7,
+      //         15,
+      //         0.2,
+      //       ],
+      //       "fill-color": [
+      //         "interpolate",
+      //         ["linear"],
+      //         ["get", "duration"],
+      //         0,
+      //         "rgba(189,0,38,0.9)",
+      //         30,
+      //         "rgba(240,59,32,0.8)",
+      //         45,
+      //         "rgba(253,141,60,0.7)",
+      //         60,
+      //         "rgba(254,204,92,0.6)",
+      //         90,
+      //         "rgba(254,217,118, 0.5)",
+      //         120,
+      //         "rgba(255,255,178, 0.4)",
+      //       ],
+      //     },
+      //   },
+      //   "waterway-label"
+      // );
 
       mapboxMap.addLayer(
         {
@@ -188,21 +157,10 @@ const Home: NextPage = () => {
               0.2,
             ],
             "fill-color": [
-              "interpolate",
-              ["linear"],
-              ["get", "duration"],
-              0,
-              "rgba(189,0,38,0.9)",
-              30,
-              "rgba(240,59,32,0.8)",
-              45,
-              "rgba(253,141,60,0.7)",
-              60,
-              "rgba(254,204,92,0.6)",
-              90,
-              "rgba(254,217,118, 0.5)",
-              120,
-              "rgba(255,255,178, 0.4)",
+              "case",
+              ['==', ["get", "type"], 'old'],
+              "rgba(189, 0,38, 0.9)",
+              "rgba(255, 255, 178, 0.4)",
             ],
           },
         },
@@ -217,20 +175,9 @@ const Home: NextPage = () => {
           layout: {},
           paint: {
             "line-color": [
-              "interpolate",
-              ["linear"],
-              ["get", "duration"],
-              0,
-              "rgba(189,0,38,0.8)",
-              30,
-              "rgba(240,59,32,0.8)",
-              45,
-              "rgba(253,141,60,0.8)",
-              60,
-              "rgba(254,204,92,0.8)",
-              90,
-              "rgba(254,217,118,0.8)",
-              120,
+              "case",
+              ['==', ["get", "type"], 'old'],
+              "rgba(189, 0,38, 0.8)",
               "rgba(224, 116, 38,0.9)",
             ],
             "line-width": 1.5,
@@ -238,6 +185,36 @@ const Home: NextPage = () => {
         },
         "waterway-label"
       );
+
+      // mapboxMap.addLayer(
+      //   {
+      //     id: "isochrones-outline",
+      //     type: "line",
+      //     source: "isochrones",
+      //     layout: {},
+      //     paint: {
+      //       "line-color": [
+      //         "interpolate",
+      //         ["linear"],
+      //         ["get", "duration"],
+      //         0,
+      //         "rgba(189,0,38,0.8)",
+      //         30,
+      //         "rgba(240,59,32,0.8)",
+      //         45,
+      //         "rgba(253,141,60,0.8)",
+      //         60,
+      //         "rgba(254,204,92,0.8)",
+      //         90,
+      //         "rgba(254,217,118,0.8)",
+      //         120,
+      //         "rgba(224, 116, 38,0.9)",
+      //       ],
+      //       "line-width": 1.5,
+      //     },
+      //   },
+      //   "waterway-label"
+      // );
 
       mapboxMap.addLayer({
         id: "stations-symbol",

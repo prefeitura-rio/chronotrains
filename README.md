@@ -1,23 +1,8 @@
-# Chronotrains
+# Chronobus
 
-Chronotrains is an interactive map that allows seeing how far you can travel by train in 5h.
+Chronobus is an interactive map that allows comparing how far you can travel by bus before and after subsidizing system in Rio de Janeiro.
 
 ![Screen Shot 2022-08-30 at 3 39 18 PM](https://user-images.githubusercontent.com/11202803/187453751-816f9f2b-8cb5-4586-ae40-4bc3b5da2087.png)
-
-## How does it work?
-
-This map displays isochrones: the area that is reacheable from a starting point in a given amount of time.
-
-This is made possible by building a graph of train stations with the journey durations, and exploring that graph for each station to see which destinations are reacheable in 1h, 2h, ... 5h.
-
-The source data is from the Deutsche Bahn, conveniently wrapped into an API by [Direkt Bahn Guru](https://github.com/juliuste/api.direkt.bahn.guru).
-
-Because local transit is not included for most cities, there are no journeys available between different stations that can actually connected by bus, bike, or on foot.
-
-We add edges between those closeby stations (when the distance in less than 10 km), assuming the distance can be traveled at 9 km/h (faster than walking, slower than biking).
-
-After scraping this data, we pre-compute the isochrones. We assume interchanges last 20 minutes.
-The isochrones are stored as GeoJSON and served on hover.
 
 ## Technology
 
@@ -33,6 +18,27 @@ The pre-processing is a mix between Node.js scripts and SQL queries. It is curre
 
 We use `next-i18next` to translate the app into various languages. If you'd like to contribute a language, you can do so by submitting a Pull Request with a new file in `public/locales/[your language]/common.json`, and editing `next-i18next.config.js` to add your locale name.
 
-## Cloning the repo
 
-Previous versions of the git history contained all the data committed as static files. For faster cloning, use `git clone --depth 1 https://github.com/benjamintd/chronotrains.git`.
+## How to run 
+
+Spin up the database
+```bash
+source .env.sample
+dc up
+```
+
+Setup env vars and migrate database
+```bash
+npx prisma migrate dev 
+```
+
+Serve website
+```bash
+npm run dev
+```
+
+
+Build isochrones by running `add-geoms.ipynb` notebook and createing a env file with the following packages:
+```bash
+pip install -r requirements.txt
+```

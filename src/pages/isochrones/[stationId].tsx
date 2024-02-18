@@ -23,29 +23,29 @@ export const getStaticProps: GetStaticProps = async (req) => {
     orderBy: { duration: 'desc' }
   });
 
-  console.log()
+  // console.log()
 
-  console.log("iso", isochrones)
-  console.log({
-    props: {
-      stationId: +(req.params!.stationId as string),
-      geometry: { type: 'FeatureCollection', features: isochrones.map((iso) => (
-        {
-          "properties": {"duration": iso.duration},
-          "geometry": iso.geometry
-      }
+  // console.log("iso", isochrones)
+  // console.log({
+  //   props: {
+  //     stationId: +(req.params!.stationId as string),
+  //     geometry: { type: 'FeatureCollection', features: isochrones.map((iso) => (
+  //       {
+  //         "properties": {"duration": iso.duration},
+  //         "geometry": iso.geometry
+  //     }
         
-        ))} 
-    },
-    revalidate: 60 * 60 * 24 // 1 day
-  }.props.geometry['features'])
+  //       ))} 
+  //   },
+  //   revalidate: 60 * 60 * 24 // 1 day
+  // }.props.geometry['features'])
 
   return {
     props: {
       stationId: +(req.params!.stationId as string),
       geometry: { type: 'FeatureCollection', features: isochrones.map((iso) => (
         {
-          "properties": {"duration": iso.duration},
+          "properties": {"duration": iso.duration, "type": iso.type},
           "geometry": iso.geometry
       }
       ))} 

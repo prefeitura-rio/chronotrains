@@ -39,10 +39,11 @@ model DirectTime {
 model Isochrone {
   stationId Int     @map("station_id")
   duration  Int
+  type      String
   geometry  Json
   station   Station @relation(fields: [stationId], references: [id])
 
-  @@id([stationId, duration])
+  @@id([stationId, duration, type])
   @@map("isochrones")
 }
 
