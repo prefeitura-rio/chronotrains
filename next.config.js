@@ -6,6 +6,9 @@ module.exports = {
   reactStrictMode: true,
   i18n,
   swcMinify: true,
+  experimental: {
+    largePageDataBytes: 512 * 100000,
+  },
   typescript: {
     // !! WARN !!
     // Dangerously allow production builds to successfully complete even if
