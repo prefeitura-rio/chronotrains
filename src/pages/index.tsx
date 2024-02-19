@@ -159,8 +159,8 @@ const Home: NextPage = () => {
             "fill-color": [
               "case",
               ['==', ["get", "type"], 'old'],
-              "rgba(255, 255, 178, 0.4)",
               "rgba(189, 0,38, 0.9)",
+              "rgba(255, 255, 178, 0.4)",
             ],
           },
         },
@@ -177,8 +177,8 @@ const Home: NextPage = () => {
             "line-color": [
               "case",
               ['==', ["get", "type"], 'old'],
-              "rgba(224, 116, 38,0.9)",
               "rgba(189, 0,38, 0.8)",
+              "rgba(224, 116, 38,0.9)",
             ],
             "line-width": 1.5,
           },
@@ -503,8 +503,8 @@ const InfoPanel = () => {
                         <span>{t("legend")}</span>
                         <div className="grid grid-cols-2 gap-2">
                           {[
-                            "rgba(255,255,178, 1)",
                             "rgba(240,59,32,0.9)",
+                            "rgba(255,255,178, 1)",
                             // "rgba(253,141,60,0.9)",
                             // "rgba(254,204,92,1)",
                             // "rgba(254,217,118,1)",
