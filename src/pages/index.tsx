@@ -177,8 +177,8 @@ const Home: NextPage = () => {
             "line-color": [
               "case",
               ['==', ["get", "type"], 'old'],
-              "rgba(189, 0,38, 0.8)",
               "rgba(224, 116, 38,0.9)",
+              "rgba(189, 0,38, 0.8)",
             ],
             "line-width": 1.5,
           },
