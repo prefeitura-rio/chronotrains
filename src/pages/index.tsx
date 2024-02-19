@@ -84,23 +84,23 @@ const Home: NextPage = () => {
         data: { type: "FeatureCollection", features: [] },
       });
 
-      // mapboxMap.addLayer(
-      //   {
-      //     id: "stations",
-      //     type: "circle",
-      //     source: "stations",
-      //     paint: {
-      //       "circle-radius": 5,
-      //       "circle-opacity": [
-      //         'case',
-      //         ['<=', ["get", "id"], 10],
-      //         1,
-      //         0
-      //       ],
-      //     },
-      //   },
-      //   "waterway-label"
-      // );
+      mapboxMap.addLayer(
+        {
+          id: "stations",
+          type: "circle",
+          source: "stations",
+          paint: {
+            "circle-radius": 1,
+            "circle-opacity": [
+              'case',
+              ['<=', ["get", "id"], 0],
+              1,
+              0
+            ],
+          },
+        },
+        "waterway-label"
+      );
 
       // mapboxMap.addLayer(
       //   {
@@ -216,23 +216,23 @@ const Home: NextPage = () => {
       //   "waterway-label"
       // );
 
-      mapboxMap.addLayer({
-        id: "stations-symbol",
-        type: "symbol",
-        source: "stations",
-        layout: {
-          // "text-field": ["get", "name"],
-          // "text-offset": [0, -1.5],
-          // "text-size": 10,
-          // "text-font": ["DIN Pro Medium", "Open Sans Regular"],
-          "icon-image": "dot-11",
-        },
-        paint: {
-          "text-color": "#333",
-          "icon-opacity": 0
-        },
-        minzoom: 10,
-      });
+      // mapboxMap.addLayer({
+      //   id: "stations-symbol",
+      //   type: "symbol",
+      //   source: "stations",
+      //   layout: {
+      //     // "text-field": ["get", "name"],
+      //     // "text-offset": [0, -1.5],
+      //     // "text-size": 10,
+      //     // "text-font": ["DIN Pro Medium", "Open Sans Regular"],
+      //     "icon-image": "dot-11",
+      //   },
+      //   paint: {
+      //     "text-color": "#333",
+      //     "icon-opacity": 0
+      //   },
+      //   minzoom: 10,
+      // });
 
       mapboxMap.addLayer({
         id: "hoveredStation",
